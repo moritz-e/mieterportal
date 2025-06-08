@@ -1,45 +1,29 @@
+'use client';
+
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
-import "../styles/globals.css";
+import "../styles/globals.css"; // ggf. anpassen!
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Mieterportal",
-  description: "Zugriff auf Wohnung, Dokumente und Kontakt",
+  description: "Ihr persönliches Portal",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {/* 🧭 Navigation */}
-        <header className="bg-gray-100 border-b p-4 shadow-sm sticky top-0 z-10">
-          <nav className="max-w-4xl mx-auto flex gap-6 text-sm font-medium text-gray-700">
-            <Link href="/" className="hover:underline">Start</Link>
-            <Link href="/wohnung" className="hover:underline">Wohnung</Link>
-            <Link href="/dokumente" className="hover:underline">Dokumente</Link>
-            <Link href="/kontakt" className="hover:underline">Kontakt</Link>
-          </nav>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <header className="p-4 border-b flex gap-6">
+          <Link href="/">Start</Link>
+          <Link href="/wohnung">Wohnung</Link>
+          <Link href="/dokumente">Dokumente</Link>
+          <Link href="/kontakt">Kontakt</Link>
         </header>
-
-        {/* 📄 Seiteninhalt */}
-        <main className="max-w-4xl mx-auto mt-8 px-4">{children}</main>
+        <main className="p-4">{children}</main>
       </body>
     </html>
   );
