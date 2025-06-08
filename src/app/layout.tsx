@@ -1,9 +1,7 @@
-'use client';
-
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../styles/globals.css"; // ggf. anpassen!
+import "./globals.css"; // Falls du Tailwind nutzt
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
